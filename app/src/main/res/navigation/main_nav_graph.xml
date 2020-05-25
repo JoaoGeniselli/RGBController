@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/pairedDevicesFragment">
+
+    <fragment
+        android:id="@+id/pairedDevicesFragment"
+        android:name="com.jgeniselli.rgbcontroller.PairedDevicesFragment"
+        android:label="paired_devices_fragment"
+        tools:layout="@layout/paired_devices_fragment" >
+        <action
+            android:id="@+id/action_devices_to_control"
+            app:destination="@id/RGBControllerFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/RGBControllerFragment"
+        android:name="com.jgeniselli.rgbcontroller.RGBControllerFragment"
+        android:label="rgb_controller_fragment"
+        tools:layout="@layout/rgb_controller_fragment" />
+</navigation>

@@ -7,6 +7,7 @@ interface ColorRepository {
 }
 
 class Color private constructor(val red: Int, val green: Int, val blue: Int) {
+
     fun toLightDevicePattern(): String {
         val format = { value: Int -> String.format("%03d", value) }
         return "${format(red)}|${format(green)}|${format(blue)}"

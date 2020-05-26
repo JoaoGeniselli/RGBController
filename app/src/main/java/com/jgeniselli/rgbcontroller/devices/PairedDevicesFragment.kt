@@ -40,7 +40,7 @@ class PairedDevicesFragment : Fragment() {
     }
 
     private fun setupViewModel() {
-        swipe_to_refresh.setOnRefreshListener { viewModel.onRefresh() }
+        swipe_to_refresh.setOnRefreshListener { viewModel.loadDevices() }
         viewModel.progressIsVisible.observe(viewLifecycleOwner, Observer { isVisible ->
             progress.visibility = if (isVisible) View.VISIBLE else View.GONE
         })
@@ -53,7 +53,7 @@ class PairedDevicesFragment : Fragment() {
             EventObserver { address ->
                 redirectToRGBControl(address)
             })
-        viewModel.onStart()
+        viewModel.loadDevices()
     }
 
     private fun redirectToRGBControl(deviceAddress: String) {

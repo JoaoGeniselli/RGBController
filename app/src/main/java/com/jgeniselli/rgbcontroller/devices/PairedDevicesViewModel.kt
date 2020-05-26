@@ -23,9 +23,7 @@ class PairedDevicesViewModel(
 
     private var cachedDevices = listOf<PairedDevice>()
 
-    fun onStart() = loadDevices()
-
-    private fun loadDevices() {
+    fun loadDevices() {
         _progressIsVisible.postValue(true)
         viewModelScope.launch {
             cachedDevices = repository.findAllDevices()
@@ -34,8 +32,6 @@ class PairedDevicesViewModel(
             _devices.postValue(formattedDevices)
         }
     }
-
-    fun onRefresh() = loadDevices()
 
     fun onDeviceClicked(position: Int) {
         cachedDevices.getOrNull(position)?.let { clickedDevice ->

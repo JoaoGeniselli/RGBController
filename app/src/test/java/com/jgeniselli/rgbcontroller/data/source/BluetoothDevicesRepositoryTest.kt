@@ -50,19 +50,18 @@ class BluetoothDevicesRepositoryTest {
 
     @Test
     fun `GIVEN multiple devices WHEN find is called THEN return valid devices`() = runBlocking {
-        val validDevice = mockk<BluetoothDevice>()
-        val deviceWithoutAddress = mockk<BluetoothDevice>()
-        val deviceWithoutName = mockk<BluetoothDevice>()
-
-        every { validDevice.name } returns "Dev-A"
-        every { validDevice.address } returns "123:456:789"
-
-        every { deviceWithoutAddress.name } returns "Dev-B"
-        every { deviceWithoutAddress.address } returns null
-
-        every { deviceWithoutName.name } returns null
-        every { deviceWithoutName.address } returns "123:456:789"
-
+        val validDevice = mockk<BluetoothDevice> {
+            every { name } returns "Dev-A"
+            every { address } returns "123:456:789"
+        }
+        val deviceWithoutAddress = mockk<BluetoothDevice> {
+            every { name } returns "Dev-B"
+            every { address } returns null
+        }
+        val deviceWithoutName = mockk<BluetoothDevice> {
+            every { name } returns null
+            every { address } returns "123:456:789"
+        }
         every { bluetoothAdapter.bondedDevices } returns setOf(
             validDevice, deviceWithoutAddress, deviceWithoutName
         )

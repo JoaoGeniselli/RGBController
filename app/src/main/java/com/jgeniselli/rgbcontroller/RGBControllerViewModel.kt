@@ -22,10 +22,10 @@ class RGBControllerViewModel(
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
+    public override fun onCleared() {
         viewModelScope.launch {
             colorRepository.disconnect()
         }
+        super.onCleared()
     }
 }

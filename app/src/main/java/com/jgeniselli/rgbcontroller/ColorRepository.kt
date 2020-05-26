@@ -6,6 +6,8 @@ interface ColorRepository {
 
 class Color private constructor(val red: Int, val green: Int, val blue: Int) {
 
+    fun toLightDevicePattern() = "$red,$green,$blue"
+
     companion object {
 
         fun create(red: Int, green: Int, blue: Int): Color {

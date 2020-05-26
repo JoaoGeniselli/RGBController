@@ -1,5 +1,8 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.color.control
 
+import com.jgeniselli.rgbcontroller.color.control.RGBControllerViewModel
+import com.jgeniselli.rgbcontroller.data.source.Color
+import com.jgeniselli.rgbcontroller.data.source.ColorRepository
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
@@ -25,7 +28,11 @@ class RGBControllerViewModelTest {
     fun before() {
         Dispatchers.setMain(mainThreadSurrogate)
         repository = mockk(relaxed = true)
-        viewModel = RGBControllerViewModel(repository, deviceAddress)
+        viewModel =
+            RGBControllerViewModel(
+                repository,
+                deviceAddress
+            )
     }
 
     @After

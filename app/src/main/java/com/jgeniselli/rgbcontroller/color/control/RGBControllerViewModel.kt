@@ -1,7 +1,9 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.color.control
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jgeniselli.rgbcontroller.data.source.Color
+import com.jgeniselli.rgbcontroller.data.source.ColorRepository
 import kotlinx.coroutines.launch
 
 class RGBControllerViewModel(

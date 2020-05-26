@@ -1,4 +1,4 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.data.source
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
@@ -6,7 +6,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class BluetoothColorRepository(private val bluetoothAdapter: BluetoothAdapter) : ColorRepository {
+class BluetoothColorRepository(private val bluetoothAdapter: BluetoothAdapter) :
+    ColorRepository {
 
     private var bluetoothSocket: BluetoothSocket? = null
 

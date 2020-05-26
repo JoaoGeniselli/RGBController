@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/pairedDevicesFragment"
-        android:name="com.jgeniselli.rgbcontroller.PairedDevicesFragment"
+        android:name="com.jgeniselli.rgbcontroller.devices.PairedDevicesFragment"
         android:label="paired_devices_fragment"
         tools:layout="@layout/paired_devices_fragment" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/RGBControllerFragment"
-        android:name="com.jgeniselli.rgbcontroller.RGBControllerFragment"
+        android:name="com.jgeniselli.rgbcontroller.color.control.RGBControllerFragment"
         android:label="rgb_controller_fragment"
         tools:layout="@layout/rgb_controller_fragment" >
         <argument

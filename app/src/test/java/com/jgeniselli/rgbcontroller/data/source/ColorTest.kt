@@ -1,5 +1,6 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.data.source
 
+import com.jgeniselli.rgbcontroller.data.source.Color
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

@@ -1,10 +1,4 @@
-package com.jgeniselli.rgbcontroller
-
-interface ColorRepository {
-    suspend fun applyColor(color: Color)
-    suspend fun connectToDevice(pairedDeviceAddress: String)
-    suspend fun disconnect()
-}
+package com.jgeniselli.rgbcontroller.data.source
 
 class Color private constructor(val red: Int, val green: Int, val blue: Int) {
 
@@ -16,8 +10,16 @@ class Color private constructor(val red: Int, val green: Int, val blue: Int) {
     companion object {
 
         fun create(red: Int, green: Int, blue: Int): Color {
-            validateColorValues(red, green, blue)
-            return Color(red, green, blue)
+            validateColorValues(
+                red,
+                green,
+                blue
+            )
+            return Color(
+                red,
+                green,
+                blue
+            )
         }
 
         private fun validateColorValues(vararg values: Int) {

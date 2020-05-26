@@ -1,9 +1,12 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.devices
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jgeniselli.rgbcontroller.data.source.DevicesRepository
+import com.jgeniselli.rgbcontroller.data.source.PairedDevice
+import com.jgeniselli.rgbcontroller.toolbox.livedata.Event
 import kotlinx.coroutines.launch
 
 class PairedDevicesViewModel(
@@ -36,7 +39,8 @@ class PairedDevicesViewModel(
 
     fun onDeviceClicked(position: Int) {
         cachedDevices.getOrNull(position)?.let { clickedDevice ->
-            _redirectToControl.value = Event(clickedDevice.address)
+            _redirectToControl.value =
+                Event(clickedDevice.address)
         } ?: run {
             throw IllegalArgumentException("Invalid device position")
         }

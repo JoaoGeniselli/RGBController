@@ -1,4 +1,4 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.color.control
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.jgeniselli.rgbcontroller.R
+import com.jgeniselli.rgbcontroller.RGBControllerFragmentArgs
 import kotlinx.android.synthetic.main.rgb_controller_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf

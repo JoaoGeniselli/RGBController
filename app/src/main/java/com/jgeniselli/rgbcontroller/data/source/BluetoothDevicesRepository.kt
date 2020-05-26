@@ -1,4 +1,4 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.data.source
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
@@ -10,7 +10,12 @@ class BluetoothDevicesRepository(
     override suspend fun findAllDevices(): List<PairedDevice> {
         return bluetoothAdapter.bondedDevices
             .filter { it.isValid() }
-            .map { PairedDevice(it.name, it.address) }
+            .map {
+                PairedDevice(
+                    it.name,
+                    it.address
+                )
+            }
             .toList()
     }
 

@@ -1,4 +1,4 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.devices
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.jgeniselli.rgbcontroller.PairedDevicesFragmentDirections
+import com.jgeniselli.rgbcontroller.R
+import com.jgeniselli.rgbcontroller.toolbox.livedata.EventObserver
 import kotlinx.android.synthetic.main.paired_devices_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -47,15 +50,18 @@ class PairedDevicesFragment : Fragment() {
             adapter.clear()
             adapter.addAll(devices)
         })
-        viewModel.redirectToControl.observe(viewLifecycleOwner, EventObserver { address ->
-            redirectToRGBControl(address)
-        })
+        viewModel.redirectToControl.observe(viewLifecycleOwner,
+            EventObserver { address ->
+                redirectToRGBControl(address)
+            })
         viewModel.onStart()
     }
 
     private fun redirectToRGBControl(deviceAddress: String) {
-        val action = PairedDevicesFragmentDirections
-            .actionDevicesToControl(deviceAddress)
+        val action =
+            PairedDevicesFragmentDirections.actionDevicesToControl(
+                deviceAddress
+            )
         findNavController().navigate(action)
     }
 }

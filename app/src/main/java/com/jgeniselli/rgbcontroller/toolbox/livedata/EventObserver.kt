@@ -1,4 +1,4 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.toolbox.livedata
 
 import androidx.lifecycle.Observer
 

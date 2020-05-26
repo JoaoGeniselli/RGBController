@@ -1,4 +1,4 @@
-package com.jgeniselli.rgbcontroller
+package com.jgeniselli.rgbcontroller.data.source
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
@@ -26,7 +26,10 @@ class BluetoothDevicesRepositoryTest {
     fun before() {
         Dispatchers.setMain(mainThreadSurrogate)
         bluetoothAdapter = mockk(relaxed = true)
-        repository = BluetoothDevicesRepository(bluetoothAdapter)
+        repository =
+            BluetoothDevicesRepository(
+                bluetoothAdapter
+            )
     }
 
     @After

@@ -9,10 +9,23 @@ class RGBControllerViewModel(
     private val pairedDeviceAddress: String
 ) : ViewModel() {
 
+    fun onStart() {
+        viewModelScope.launch {
+            colorRepository.connectToDevice(pairedDeviceAddress)
+        }
+    }
+
     fun onApplyClicked(red: Int, green: Int, blue: Int) {
         viewModelScope.launch {
             val color = Color.create(red, green, blue)
-            colorRepository.applyColor(pairedDeviceAddress, color)
+            colorRepository.applyColor(color)
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelScope.launch {
+            colorRepository.disconnect()
         }
     }
 }

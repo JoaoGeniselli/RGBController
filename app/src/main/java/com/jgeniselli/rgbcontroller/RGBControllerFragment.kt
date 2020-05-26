@@ -29,6 +29,7 @@ class RGBControllerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         button_apply.setOnClickListener { viewModel.onApplyClicked(red, green, blue) }
+        viewModel.onStart()
     }
 
 }

@@ -1,12 +1,18 @@
 package com.jgeniselli.rgbcontroller
 
 interface ColorRepository {
-    suspend fun applyColor(deviceAddress: String, color: Color)
+    suspend fun applyColor(color: Color)
+    suspend fun connectToDevice(pairedDeviceAddress: String)
+    suspend fun disconnect()
 }
 
-class Color private constructor(val red: Int, val green: Int, val blue: Int) {
-
-    fun toLightDevicePattern() = "$red,$green,$blue"
+class Color private constructor(
+    private val red: Int, private val green: Int, private val blue: Int
+) {
+    fun toLightDevicePattern(): String {
+        val format = { value: Int -> String.format("%03d", value) }
+        return "${format(red)}|${format(green)}|${format(blue)}"
+    }
 
     companion object {
 

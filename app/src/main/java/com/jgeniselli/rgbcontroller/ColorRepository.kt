@@ -6,9 +6,7 @@ interface ColorRepository {
     suspend fun disconnect()
 }
 
-class Color private constructor(
-    private val red: Int, private val green: Int, private val blue: Int
-) {
+class Color private constructor(val red: Int, val green: Int, val blue: Int) {
     fun toLightDevicePattern(): String {
         val format = { value: Int -> String.format("%03d", value) }
         return "${format(red)}|${format(green)}|${format(blue)}"

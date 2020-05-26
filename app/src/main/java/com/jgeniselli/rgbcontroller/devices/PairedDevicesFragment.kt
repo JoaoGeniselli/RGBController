@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.jgeniselli.rgbcontroller.PairedDevicesFragmentDirections
 import com.jgeniselli.rgbcontroller.R
 import com.jgeniselli.rgbcontroller.toolbox.livedata.EventObserver
 import kotlinx.android.synthetic.main.paired_devices_fragment.*

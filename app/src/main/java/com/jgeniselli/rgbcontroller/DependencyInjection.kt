@@ -11,8 +11,9 @@ object DependencyInjection {
             single<DevicesRepository> {
                 BluetoothDevicesRepository(BluetoothAdapter.getDefaultAdapter())
             }
+            single<ColorRepository> { BluetoothColorRepository() }
             viewModel { PairedDevicesViewModel(get()) }
-            viewModel { RGBControllerViewModel() }
+            viewModel { (deviceAddress: String) -> RGBControllerViewModel(get(), deviceAddress) }
         }
     }
 }

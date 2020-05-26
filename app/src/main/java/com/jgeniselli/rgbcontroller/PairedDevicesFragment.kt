@@ -32,12 +32,9 @@ class PairedDevicesFragment : Fragment() {
     private fun setupListView() {
         adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1)
         list_view.adapter = adapter
-        list_view.setOnItemClickListener { _, _, _, _ -> redirectToRGBControl() }
-    }
-
-    private fun redirectToRGBControl() {
-        val action = PairedDevicesFragmentDirections.actionDevicesToControl()
-        findNavController().navigate(action)
+        list_view.setOnItemClickListener { _, _, position, _ ->
+            viewModel.onDeviceClicked(position)
+        }
     }
 
     private fun setupViewModel() {
@@ -50,6 +47,15 @@ class PairedDevicesFragment : Fragment() {
             adapter.clear()
             adapter.addAll(devices)
         })
+        viewModel.redirectToControl.observe(viewLifecycleOwner, EventObserver { address ->
+            redirectToRGBControl(address)
+        })
         viewModel.onStart()
+    }
+
+    private fun redirectToRGBControl(deviceAddress: String) {
+        val action = PairedDevicesFragmentDirections
+            .actionDevicesToControl(deviceAddress)
+        findNavController().navigate(action)
     }
 }

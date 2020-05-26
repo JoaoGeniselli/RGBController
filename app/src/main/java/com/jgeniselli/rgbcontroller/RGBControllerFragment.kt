@@ -1,19 +1,18 @@
 package com.jgeniselli.rgbcontroller
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class RGBControllerFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RGBControllerFragment()
-    }
-
-    private lateinit var viewModel: RGBControllerViewModel
+    private val args: RGBControllerFragmentArgs by navArgs()
+    private val viewModel by viewModel<RGBControllerViewModel> { parametersOf(args.deviceAddress) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,10 +21,12 @@ class RGBControllerFragment : Fragment() {
         return inflater.inflate(R.layout.rgb_controller_fragment, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(RGBControllerViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

@@ -1,7 +1,7 @@
 package com.jgeniselli.rgbcontroller
 
 interface ColorRepository {
-    suspend fun applyColor(color: Color)
+    suspend fun applyColor(deviceAddress: String, color: Color)
 }
 
 class Color private constructor(val red: Int, val green: Int, val blue: Int) {

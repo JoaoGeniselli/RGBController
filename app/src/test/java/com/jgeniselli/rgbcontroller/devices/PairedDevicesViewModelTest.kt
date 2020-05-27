@@ -56,14 +56,15 @@ class PairedDevicesViewModelTest {
         viewModel.loadDevices()
 
         viewModel.progressIsVisible.removeObserver(progressObserver)
-        assertEquals(2, progressValues.size)
-        assertEquals(true, progressValues[0])
-        assertEquals(false, progressValues[1])
 
         val loadedDevices = viewModel.devices.getOrAwaitValue()
         assertEquals(2, loadedDevices.size)
         assertEquals("A", loadedDevices[0])
         assertEquals("B", loadedDevices[1])
+
+        assertEquals(2, progressValues.size)
+        assertEquals(true, progressValues[0])
+        assertEquals(false, progressValues[1])
 
         coVerify { repository.findAllDevices() }
     }

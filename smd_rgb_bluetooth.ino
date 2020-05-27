@@ -1,25 +1,26 @@
-int pinoRed = 9;
-int pinoGreen = 10;
-int pinoBlue = 11;
-
-int val;
+int pinRed = 9;
+int pinGreen = 10;
+int pinBlue = 11;
 
 void setup(){
-  pinMode(pinoRed, OUTPUT);
-  pinMode(pinoBlue, OUTPUT);
-  pinMode(pinoGreen, OUTPUT);
+  Serial.begin(9600);
+  pinMode(pinRed, OUTPUT);
+  pinMode(pinBlue, OUTPUT);
+  pinMode(pinGreen, OUTPUT);
 }
+
 void loop (){
-  for(val = 255; val > 0; val --){ //PARA val IGUAL A 255, ENQUANTO val MAIOR QUE 0, DECREMENTA val
-      analogWrite(pinoRed, val); //PINO RECEBE O VALOR
-      analogWrite(pinoBlue, 255-val); //PINO RECEBE O VALOR
-      analogWrite(pinoGreen, 128-val); //PINO RECEBE O VALOR
-      delay (10); //INTERVALO DE 10 MILISSEGUNDOS
-  }
-  for(val = 0; val < 255; val ++){ //PARA val IGUAL A 0, ENQUANTO val MENOR QUE 255, INCREMENTA val
-      analogWrite(pinoRed, val); //PINO RECEBE O VALOR
-      analogWrite(pinoBlue, 255-val); //PINO RECEBE O VALOR
-      analogWrite(pinoGreen, 128-val); //PINO RECEBE O VALOR
-      delay (10); //INTERVALO DE 10 MILISSEGUNDOS
+  if(Serial.available() > 0) {
+    String data = Serial.readString();
+    Serial.print(data);
+    Serial.print("\n");
+
+    int red = data.substring(0, 2).toInt();
+    int green = data.substring(4, 6).toInt();
+    int blue = data.substring(8, 10).toInt();
+
+    analogWrite(pinRed, red);
+    analogWrite(pinGreen, green);
+    analogWrite(pinBlue, blue);
   }
 }

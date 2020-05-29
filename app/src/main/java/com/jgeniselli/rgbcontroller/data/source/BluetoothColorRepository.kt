@@ -6,10 +6,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class BluetoothColorRepository(private val bluetoothAdapter: BluetoothAdapter) :
+open class BluetoothColorRepository(private val bluetoothAdapter: BluetoothAdapter) :
     ColorRepository {
 
     private var bluetoothSocket: BluetoothSocket? = null
+        // mock backing field support:
+        get() = field
+        set(value) { field = value }
 
     override suspend fun applyColor(color: Color) {
         GlobalScope.launch(Dispatchers.IO) {

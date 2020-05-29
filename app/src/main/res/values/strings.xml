@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RGB Controller</string>
     <string name="apply">Apply</string>
+    <string name="color_preview">Color preview:</string>
 </resources>

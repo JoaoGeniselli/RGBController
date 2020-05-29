@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Controlador RGB</string>
     <string name="apply">Aplicar</string>
+    <string name="color_preview">Pré-visualização da cor:</string>
 </resources>

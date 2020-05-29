@@ -26,8 +26,12 @@ open class BluetoothColorRepository(private val bluetoothAdapter: BluetoothAdapt
             device?.let {
                 val uuid = device.uuids.firstOrNull()?.uuid
                 val socket = device.createRfcommSocketToServiceRecord(uuid)
-                socket.connect()
-                bluetoothSocket = socket
+                bluetoothSocket = try {
+                    socket.connect()
+                    socket
+                } catch (e: Throwable) {
+                    null
+                }
             }
         }
     }

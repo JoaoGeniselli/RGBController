@@ -10,4 +10,6 @@
     <color name="slider_green_light">#80e27e</color>
     <color name="slider_blue">#2196f3</color>
     <color name="slider_blue_light">#6ec6ff</color>
+    
+    <color name="dark_grey">#424242</color>
 </resources>
